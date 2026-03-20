@@ -1,0 +1,88 @@
+{
+  "version": "2026.03.20",
+  "last_update": "2026-03-20T17:06:13.782676",
+  "forbidden_words": [
+    {
+      "word": "最便宜",
+      "replacement": "比较实惠",
+      "category": "绝对化用语"
+    },
+    {
+      "word": "最划算",
+      "replacement": "很划算",
+      "category": "绝对化用语"
+    },
+    {
+      "word": "第一",
+      "replacement": "领先",
+      "category": "绝对化用语"
+    },
+    {
+      "word": "顶级",
+      "replacement": "高品质",
+      "category": "绝对化用语"
+    },
+    {
+      "word": "绝对",
+      "replacement": "非常",
+      "category": "绝对化用语"
+    },
+    {
+      "word": "100%",
+      "replacement": "很高比例",
+      "category": "绝对化用语"
+    },
+    {
+      "word": "保证",
+      "replacement": "确保",
+      "category": "承诺用语"
+    },
+    {
+      "word": "稳赚",
+      "replacement": "有保障",
+      "category": "承诺用语"
+    },
+    {
+      "word": "包过",
+      "replacement": "有把握",
+      "category": "承诺用语"
+    },
+    {
+      "word": "秒批",
+      "replacement": "快速审批",
+      "category": "承诺用语"
+    }
+  ],
+  "sensitive_words": [
+    {
+      "word": "投资",
+      "replacement": "理财",
+      "category": "金融风险"
+    },
+    {
+      "word": "赌博",
+      "replacement": "娱乐",
+      "category": "政策风险"
+    },
+    {
+      "word": "彩票",
+      "replacement": "抽奖",
+      "category": "政策风险"
+    },
+    {
+      "word": "代购",
+      "replacement": "采购",
+      "category": "政策风险"
+    },
+    {
+      "word": "高仿",
+      "replacement": "相似款",
+      "category": "侵权风险"
+    },
+    {
+      "word": "黑户",
+      "replacement": "信用受损",
+      "category": "金融风险"
+    }
+  ]
+}

@@ -1,8 +1,6 @@
 """
-小红书 Agent - Agent 定义模块
+小红书 Agent - 选题策划模块
 """
-
-import os
 
 class TopicPlanner:
     """选题策划 Agent - 智能版本"""
@@ -10,23 +8,31 @@ class TopicPlanner:
     def __init__(self):
         self.name = "选题策划师"
         self.role = "小红书内容策划专家，擅长发现热点话题和用户痛点"
-        self.expertise = [
+        
+        # 默认选题分类
+        self.categories = [
             "武汉本地生活",
             "贷款金融知识", 
             "早餐美食推荐",
             "热点话题分析"
         ]
     
-    async def generate_topics_ai(self, preferences: list, count: int = 5) -> list:
-        """使用 AI 生成高质量选题"""
-        # 这里可以接入 OpenAI / Claude 等 API
-        # 暂时返回基于偏好的智能推荐
+    async def generate_topics(self, preferences: list, count: int = 5) -> list:
+        """根据用户偏好生成选题列表
         
+        Args:
+            preferences: 用户偏好列表，如 ["武汉早餐", "贷款知识"]
+            count: 生成数量
+            
+        Returns:
+            选题列表，每项包含 id, title, category, tags, hook, outline
+        """
         topics = []
+        
         for i in range(count):
             category = preferences[i % len(preferences)] if preferences else "生活"
             
-            # 根据不同分类生成对应选题
+            # 根据分类生成对应选题
             if "早餐" in category or "武汉" in category:
                 title = self._get_breakfast_topic(i)
             elif "贷款" in category or "金融" in category:
@@ -35,13 +41,15 @@ class TopicPlanner:
                 title = self._get_lifestyle_topic(i)
             
             topics.append({
-                "id": i + 1,
+                "id": f"topic_{i+1:03d}",
                 "title": title,
                 "category": category,
                 "tags": self._get_tags(category),
                 "hook": self._generate_hook(title),
-                "outline": self._generate_outline(title)
+                "outline": self._generate_outline(title),
+                "source": "ai_generate"  # 数据来源
             })
+        
         return topics
     
     def _get_breakfast_topic(self, index: int) -> str:
@@ -101,10 +109,9 @@ class TopicPlanner:
             "结尾": "总结 + 互动引导"
         }
 
-# 兼容旧接口
-def generate_topics(user_preferences: list, count: int = 5) -> list:
+# 兼容接口
+async def generate_topics(preferences: list, count: int = 5) -> list:
     planner = TopicPlanner()
-    import asyncio
-    return asyncio.run(planner.generate_topics_ai(user_preferences, count))
+    return await planner.generate_topics(preferences, count)
 
 __all__ = ["TopicPlanner", "generate_topics"]
