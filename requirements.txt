@@ -1,0 +1,13 @@
+# 小红书 Agent v2 依赖
+
+# Core
+anthropic>=0.18.0
+
+# HTTP Client
+httpx>=0.25.0
+
+# Environment
+python-dotenv>=1.0.0
+
+# Logging
+loguru>=0.7.0
